@@ -8,7 +8,7 @@
 
 | | |
 |---|---|
-| ![Foto 1](photos/foto1.jpg) |
+| ![Foto 1](photos/foto1.jpg) | ![Foto 2](photos/foto2.jpg) |
 
 ---
 
@@ -33,7 +33,7 @@ Este repositório é um **fork** do projeto original **Macropad MIDI Controller*
 - **Harpejo:** cada pad dispara um arpejo automático do voicing do acorde, com BPM e divisão configuráveis
 - **Sustain touch** (C4): mantém o sustain enquanto o botão estiver pressionado
 - **Oitava rápida** (C5/C6): sobe e desce oitava diretamente
-- **Play/Pause DAW** (C7): envia CC29 para controlar transporte da DAW
+- **Botão coringa** (C7): envia CC30 (configurável), 127 ao pressionar e 0 ao soltar — mapeie na DAW para a função que preferir
 - **Menu completo** (4 pads simultâneos): escalas, acordes, modos, configuração, presets
 - **4 presets** salvos em flash (memória não volátil)
 - **Bootsel via GP28**: segurar 2 s entra em modo UF2 para reflash
@@ -45,7 +45,7 @@ Este repositório é um **fork** do projeto original **Macropad MIDI Controller*
 | GPIO  | Função                        |
 |-------|-------------------------------|
 | GP0–GP15  | 16 pads                   |
-| GP16  | C7 – Play/Pause DAW           |
+| GP16  | C7 – Botão coringa (CC livre)  |
 | GP17  | C6 – Oitava −                 |
 | GP18  | C5 – Oitava +                 |
 | GP19  | C4 – Sustain touch            |
@@ -69,7 +69,7 @@ Este repositório é um **fork** do projeto original **Macropad MIDI Controller*
 | C4    | GP19 | Sustain touch (hold = on, soltar = off) |
 | C5    | GP18 | Oitava +1                           |
 | C6    | GP17 | Oitava −1                           |
-| C7    | GP16 | Play / Pause DAW (CC 29)            |
+| C7    | GP16 | Botão coringa (CC 30, hold = 127, release = 0) |
 
 ---
 
@@ -101,6 +101,8 @@ Os diagramas de ligação estão disponíveis na pasta [`hardware/wiring/`](hard
 | Arquivo | Descrição |
 |---------|-----------|
 | [`wiring_full.svg`](hardware/wiring/wiring_full.svg) | Diagrama completo: Pico + pads + botões C1–C7 + OLED |
+| [`wiring_pads.svg`](hardware/wiring/wiring_pads.svg) | Detalhe: matriz de 16 pads |
+| [`wiring_controls.svg`](hardware/wiring/wiring_controls.svg) | Detalhe: botões C1–C7 e OLED |
 
 ---
 
@@ -115,7 +117,7 @@ Os arquivos para impressão estão na pasta [`hardware/stl/`](hardware/stl/):
 **Configurações sugeridas de impressão:**
 - Material: PLA ou PETG
 - Espessura de camada: 0,2 mm
-- Preenchimento: 15–30%
+- Preenchimento: 20–30%
 - Suporte: conforme necessário para a caixa
 
 ---
@@ -139,9 +141,16 @@ Os arquivos para impressão estão na pasta [`hardware/stl/`](hardware/stl/):
 
 1. Instale o Arduino IDE e o suporte ao RP2040 (earlephilhower/arduino-pico)
 2. Instale as dependências listadas acima
-3. Abra `firmware/grand_pad_midi_v1.0/grand_pad_midi_v1.0.ino`
+3. Abra `firmware/macropad_midi_v2.7/macropad_midi_v2.7.ino`
 4. Selecione a placa **Raspberry Pi Pico** e o USB Stack **Adafruit TinyUSB**
 5. Pressione **Upload** com o Pico em modo BOOTSEL (segure o botão BOOTSEL ao conectar o USB), ou use o botão GP28 já mapeado no firmware (segurar 2 s)
+
+---
+
+## Histórico de Versões
+
+Veja [`CHANGELOG.md`](CHANGELOG.md) para o histórico detalhado de mudanças
+de cada versão do firmware — útil como referência para mensagens de commit.
 
 ---
 
