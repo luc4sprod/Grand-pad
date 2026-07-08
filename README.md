@@ -8,7 +8,7 @@
 
 | | |
 |---|---|
-| ![Foto 1](photos/foto1.jpg) | ![Foto 2](photos/foto2.jpg) |
+| ![Foto 1](photos/foto1.jpg) |
 
 ---
 
